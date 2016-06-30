@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="candescent.analyzer">
   <head>
     <meta charset="UTF-8">
     <title>HL7 Analyzer</title>
@@ -7,11 +7,10 @@
   <body>
     <h1>Welcome to the HL7 Analyzer</h1>
 
-    <div ng-app="HelloWorldApp">
-      <div ng-controller="HelloWorldController">
-        <h1>{{greeting}}</h1>
-      </div>
-    </div>
+    <div ui-view="header"></div>
+    <div ui-view="main" class="view-frame row"></div>
+    <div ui-view="footer"></div>
+
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using node <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
@@ -24,14 +23,17 @@
 
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbuild -->
 
-    <script> 
-      angular.module('HelloWorldApp', [])
-         .controller('HelloWorldController', function($scope) {
-             $scope.greeting = "Hello World";
-      });
-    </script>
+
+    <!-- build:js scripts/app.js -->
+    <script src="scripts/app.module.js"></script>
+    <script src="scripts/app.config.js"></script>
+    <script src="scripts/app.routes.js"></script>
+    <script src="scripts/components/core/header-controller.js"></script>
+    <script src="scripts/components/home/home.js"></script>
+    <!-- endbuild --> 
   </body>
 
   <script>
