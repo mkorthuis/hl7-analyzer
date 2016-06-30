@@ -17,6 +17,7 @@
   ],
   "author": "Candescent Health",
   "devDependencies": {
+    "electron-prebuilt": "^1.2.0",
     "gulp": "^3.9.1"
   }
 }
