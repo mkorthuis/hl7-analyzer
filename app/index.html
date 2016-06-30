@@ -5,21 +5,10 @@
     <title>HL7 Analyzer</title>
   </head>
   <body>
-    <h1>Welcome to the HL7 Analyzer</h1>
-
+  
     <div ui-view="header"></div>
     <div ui-view="main" class="view-frame row"></div>
     <div ui-view="footer"></div>
-
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <script type="text/javascript">
-      var fs = require('fs');
-      var file = fs.readFileSync('app/package.json'); 
-      document.write(file); 
-    </script> 
 
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
