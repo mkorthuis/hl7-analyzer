@@ -6,6 +6,12 @@
   </head>
   <body>
     <h1>Welcome to the HL7 Analyzer</h1>
+
+    <div ng-app="HelloWorldApp">
+      <div ng-controller="HelloWorldController">
+        <h1>{{greeting}}</h1>
+      </div>
+    </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using node <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
@@ -20,6 +26,12 @@
     <script src="bower_components/angular/angular.js"></script>
     <!-- endbuild -->
 
+    <script> 
+      angular.module('HelloWorldApp', [])
+         .controller('HelloWorldController', function($scope) {
+             $scope.greeting = "Hello World";
+      });
+    </script>
   </body>
 
   <script>
