@@ -1,6 +1,7 @@
+
 'use strict';
 
-require('angular').module(global.appName).factory('HL7Parse',
+angular.module('candescent.analyzer').factory('HL7Parse',
 function() {
     var service = {};
 
@@ -53,7 +54,7 @@ function() {
             throw 'No MSH in message';
         }
 
-        result                = {};
+        var result            = {};
         result['segments']    = segmentsOut;
         result['MSH']         = msh;
         result['messageType'] = msh['Message Type'];
