@@ -71902,7 +71902,7 @@ var segments = {
     }
 };
 
-var hl7Dict = {
+global.hl7Dict = {
     'fields'  : fields,
     'messages': messages,
     'segments': segments
