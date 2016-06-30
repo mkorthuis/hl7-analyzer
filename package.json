@@ -1,0 +1,22 @@
+{
+  "name": "hl7-analyzer",
+  "version": "1.0.0",
+  "description": "Parse and Analyze HL7 Messages",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://stash.candescent.io/sw/hl7parser.git"
+  },
+  "keywords": [
+    "HL7",
+    "Analyzer",
+    "Parser"
+  ],
+  "author": "Candescent Health",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}
