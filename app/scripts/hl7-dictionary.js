@@ -1,6 +1,7 @@
 // This is hacked up from https://www.npmjs.com/package/hl7-dictionary.
 // The official release is as a node module, which doesn't play nice
-// with our electon/angular framework.
+// with our electon/angular framework. Well, maybe it would
+// acually work since electron is based on node...
 
 var fields = {
     "AD": {
