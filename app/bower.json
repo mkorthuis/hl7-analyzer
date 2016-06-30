@@ -1,0 +1,26 @@
+{
+  "name": "hl7-analyzer",
+  "description": "Parse and Analyze HL7 Messages",
+  "main": "index.html",
+  "authors": [
+    "Candescent Health"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "HL7",
+    "Analyzer",
+    "Parser"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
+}

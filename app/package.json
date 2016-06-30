@@ -17,6 +17,8 @@
   ],
   "author": "Candescent Health",
   "devDependencies": {
-    "electron-prebuilt": "^1.2.0"
+    "electron-prebuilt": "^1.2.0",
+    "bower": "^1.7.9"
+
   }
 }
