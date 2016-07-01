@@ -7,6 +7,7 @@ angular.module('candescent.analyzer').controller('HomeController',
       var dir = 'app/hl7/orm';
       var filesInDir = fs.readdirSync(dir);
 
+      vm.dir = dir;
       vm.map = {};
       vm.results = [];
       vm.stats = [];
@@ -14,7 +15,7 @@ angular.module('candescent.analyzer').controller('HomeController',
       for (var id in filesInDir) {
          var filename = filesInDir[id];
          if (filename != '.DS_Store') {
-            var data = fs.readFileSync(dir + '/' + filename).toString();
+            var data = fs.readFileSync(vm.dir + '/' + filename).toString();
             //console.log(dir + '/' + filename);
             console.log(HL7Parse.parseMessage(data));
             vm.results.push(HL7Parse.parseMessage(data));
