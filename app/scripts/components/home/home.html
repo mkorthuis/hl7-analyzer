@@ -23,13 +23,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Test</td>
+		<tr ng-repeat="stats in vm.stats">
+			<td>{{stats.path}}</td>
+			<td>{{stats.count}}</td>
+			<td>{{stats.percentage}}</td>
+			<td>{{stats.length}}</td>
+			<td>{{stats.description}}</td>
+			<td>{{stats.value}}</td>
 		</tr>
 	</tbody>
 </table>
