@@ -4,9 +4,9 @@
 angular.module('candescent.analyzer').controller('HomeController',
     function(HL7Parse) {
         var vm = this;
+        vm.dir = 'app/hl7/orm';
         var fs = require('fs');
-        var dir = 'app/hl7/orm';
-        var filesInDir = fs.readdirSync(dir);
+        var filesInDir = fs.readdirSync(vm.dir);
 
         vm.map = {};
         vm.results = [];
