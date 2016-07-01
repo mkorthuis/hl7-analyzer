@@ -29,7 +29,7 @@
 			<td>{{stats.percent}}</td>
 			<td>{{stats.max_length}}</td>
 			<td>{{stats.description}}</td>
-			<td>{{stats.value}}</td>
+			<td><span ng-repeat="value in stats.value">{{value}}<br /></span></td>
 		</tr>
 	</tbody>
 </table>
