@@ -38,7 +38,7 @@ function() {
                     if (f >= segDefn.fields.length) {
                         throw 'Segment ' + segment + 'has too many fields';
                     }
-                    seg[segDefn.fields[f].desc] = fields[f].trim();
+                    seg[segDefn.fields[f-1].desc] = fields[f].trim();
                 }
             }
             if (segment == 'MSH') {
