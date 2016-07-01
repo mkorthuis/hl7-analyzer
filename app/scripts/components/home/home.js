@@ -27,9 +27,13 @@ angular.module('candescent.analyzer').controller('HomeController',
       }
 
       function load() {
-         filesInDir = fs.readdirSync(vm.dir);
          vm.results = [];
          vm.analyzed = {};
+         vm.totalMsg = 0;
+         vm.stats = [];
+         filesInDir = fs.readdirSync(vm.dir);
+
+
          for (var id in filesInDir) {
             var filename = filesInDir[id];
             if (filename != '.DS_Store') {
