@@ -40,16 +40,8 @@
 
 
 	</uib-tab>
+
 	<uib-tab index="1">
-		<uib-tab-heading>Raw</uib-tab-heading>	
-
-<div class="thumbnail" ng-repeat="hlseven in vm.results">
-	<pre>{{hlseven.message}}</pre>
-</div>
-
-
-	</uib-tab>
-	<uib-tab index="2">
 		<uib-tab-heading>Formatted</uib-tab-heading>	
 <div class="thumbnail" ng-repeat="hlseven in vm.results">
 
@@ -74,7 +66,15 @@
 
 
 	</uib-tab>
+	<uib-tab index="2">
+		<uib-tab-heading>Raw</uib-tab-heading>	
 
+<div class="thumbnail" ng-repeat="hlseven in vm.results">
+	<pre>{{hlseven.message}}</pre>
+</div>
+
+
+	</uib-tab>
 </uib-tabset>
 
 
