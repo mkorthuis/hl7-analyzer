@@ -2,7 +2,8 @@
   'use strict';
 
   var app = angular.module('candescent.analyzer', [
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ]);
 
 
