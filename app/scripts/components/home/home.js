@@ -5,7 +5,7 @@ angular.module('candescent.analyzer').controller('HomeController',
       var vm = this;
       var fs = require('fs');
       var dir = 'app/hl7/orm';
-      var filesInDir = fs.readdirSync(dir);
+      var filesInDir;
 
       vm.dir = dir;
       vm.map = {};
@@ -15,6 +15,7 @@ angular.module('candescent.analyzer').controller('HomeController',
       $scope.$watch('vm.dir', load);
 
       function load() {
+         filesInDir = fs.readdirSync(vm.dir);
          vm.results = [];
          for (var id in filesInDir) {
             var filename = filesInDir[id];
