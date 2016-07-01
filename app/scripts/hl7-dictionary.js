@@ -65092,7 +65092,7 @@ var segments = {
             },
             {
                 "datatype": "CWE",
-                "desc": "Administrative Sex",
+                "desc": "Gender",
                 "opt": 1,
                 "rep": 1,
                 "table": 1

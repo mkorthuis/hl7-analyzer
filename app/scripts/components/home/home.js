@@ -93,7 +93,7 @@ angular.module('candescent.analyzer').controller('HomeController',
                vm.analyzed[newStat.path] = {
                   'max_length': newStat.length,
                   'min_length': newStat.length,
-                  'percent' : 100,
+                  'percent' : '100%',
                   'value': new Array(newStat.value),
                   'description': newStat.description,
                   'path': newStat.path,
