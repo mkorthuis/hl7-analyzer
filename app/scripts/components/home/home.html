@@ -18,20 +18,20 @@
 	<thead>
 		<tr>
 			<th>Path</th>
+			<th>HL7 Field Description</th>
 			<th>Count</th>
 			<th>%</th>
 			<th>Len</th>
-			<th>HL7 Description</th>
-			<th>Sample(s)</th>
+			<th>Sample Value(s)</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="stats in vm.analyzed">
 			<td>{{stats.path}}</td>
+			<td>{{stats.description}}</td>
 			<td>{{stats.count}}</td>
 			<td>{{stats.percent}}</td>
 			<td>{{stats.max_length}}</td>
-			<td>{{stats.description}}</td>
 			<td><span ng-repeat="value in stats.value">{{value}}<br /></span></td>
 		</tr>
 	</tbody>

@@ -55,7 +55,7 @@ angular.module('candescent.analyzer').controller('HomeController',
                            continue;
                         }
                         //console.log(field + ':' + data[field]);
-                        var p = segmentName + '-' + HL7Parse.findFieldIndex(segmentName, field);
+                        var p = segmentName + '.' + HL7Parse.findFieldIndex(segmentName, field);
                         var stats = {
                            'length': (segment[field]).length,
                            'description': field,
