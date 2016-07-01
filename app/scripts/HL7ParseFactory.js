@@ -36,9 +36,11 @@ function() {
             for (var f = 1; f < fields.length; f++) {
                 if (fields[f] != '') {
                     if (f >= segDefn.fields.length) {
-                        throw 'Segment ' + segment + 'has too many fields';
+                        //throw 'Segment ' + segment + ' has too many fields';
+                        console.log('Segment ' + segment + ' has too many fields; ignored excess');
+                    } else {
+                        seg[segDefn.fields[f-1].desc] = fields[f].trim();
                     }
-                    seg[segDefn.fields[f-1].desc] = fields[f].trim();
                 }
             }
             if (segment == 'MSH') {
