@@ -7,7 +7,6 @@ angular.module('candescent.analyzer').controller('HomeController',
       var dir = 'app/hl7/orm';
       var filesInDir = fs.readdirSync(dir);
 
-      vm.dir = dir;
       vm.map = {};
       vm.results = [];
       vm.stats = [];
@@ -15,31 +14,23 @@ angular.module('candescent.analyzer').controller('HomeController',
       for (var id in filesInDir) {
          var filename = filesInDir[id];
          if (filename != '.DS_Store') {
-            var data = fs.readFileSync(vm.dir + '/' + filename).toString();
-            //console.log(dir + '/' + filename);
-            console.log(HL7Parse.parseMessage(data));
+            var data = fs.readFileSync(dir + '/' + filename).toString();
+            //console.log(HL7Parse.parseMessage(data));
             vm.results.push(HL7Parse.parseMessage(data));
          }
       }
 
+      //console.log(vm.results);
+      //debugger;
       for (var id in vm.results) {
          var hl7 = vm.results[id];
          for (var segmentId in hl7) {
-            console.log(segmentId);
+            //console.log(segmentId);
             var segment = hl7[segmentId];
-            if (segmentId == 'MSH') {
-               for (var field in segment) {
-                  //console.log(field + ':' + segment[field]);
-                  var stats = {
-                     'length': (segment[field]).length,
-                     'description': field,
-                     'value': segment[field]
-                  }
-                  vm.stats.push(stats);
-               }
-            } else {
+            if(segmentId == 'segments'){
                for (var index in segment) {
                   var data = segment[index];
+                  var segmentName = data['_SegmentType'];
                   for (var field in data) {
                      //console.log(field + ':' + data[field]);
                      var stats = {
@@ -47,13 +38,13 @@ angular.module('candescent.analyzer').controller('HomeController',
                         'description': field,
                         'value': data[field]
                      }
+                     console.log(segmentName);
                      vm.stats.push(stats);
                   }
                }
             }
          }
       }
-
 
       console.log(vm.stats);
 
