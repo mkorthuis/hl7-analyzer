@@ -32,10 +32,15 @@ angular.module('candescent.analyzer').controller('HomeController',
                   var data = segment[index];
                   var segmentName = data['_SegmentType'];
                   for (var field in data) {
+                    if (field == '_SegmentType') {
+                        continue;
+                    }
                      //console.log(field + ':' + data[field]);
+                     var p = segmentName + '-' + HL7Parse.findFieldIndex(segmentName, field);
                      var stats = {
                         'length': (data[field]).length,
                         'description': field,
+                        'path': p,
                         'value': data[field]
                      }
                      console.log(segmentName);

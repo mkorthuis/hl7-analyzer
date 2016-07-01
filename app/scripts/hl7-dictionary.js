@@ -71907,14 +71907,5 @@ global.hl7Dict = {
     'fields'  : fields,
     'messages': messages,
     'segments': segments,
-    'findFieldIndex': function(segment, description) {
-        var seg = segments[segment];
-        for (var i = 0; i < seg.fields.length; i++) {
-            if (seg.fields[i].desc == description) {
-                return i+1;
-            }
-        }
-        return 0;
-    }
 };
 

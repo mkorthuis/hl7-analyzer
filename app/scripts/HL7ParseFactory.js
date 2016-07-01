@@ -62,5 +62,27 @@ function() {
         return result;
     };
 
+    //-----------------------------------------------------------------------------
+    // Returns the field index given the text description of a field for
+    // a given segment.
+    service.indexMap = {}; // local cache for speed
+    service.findFieldIndex = function(segment, description) {
+        if (! service.indexMap.hasOwnProperty(segment)) {
+            if (! hl7Dict.segments.hasOwnProperty(segment)) {
+                throw 'Unknown segment: ' + segment;
+            }
+            service.indexMap[segment] = {};
+            var seg                   = hl7Dict.segments[segment];
+            for (var i = 0; i < seg.fields.length; i++) {
+                service.indexMap[segment][seg.fields[i].desc] = i+1;
+            }
+        }
+        if (! service.indexMap[segment].hasOwnProperty(description)) {
+            throw 'Description "' + description + '" not found in segment ' + segment;
+        }
+        return service.indexMap[segment][description];
+    }
+
+
     return service;
 });
