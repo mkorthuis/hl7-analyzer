@@ -2,7 +2,7 @@
 <form class="form-inline">
 	<div class="form-group">
 	<label for="directory">Directory: </label>
-	<input type="text" class="form-control" name="directory" id="directory" ng-model="vm.dir" required>
+		<input type="text" class="form-control" name="directory" id="directory" ng-model="vm.dir" style="width: 300px;" required>
 	</div>
 </form>
 
@@ -46,6 +46,32 @@
 
 
 	</uib-tab>
+	<uib-tab index="2">
+		<uib-tab-heading>Formatted</uib-tab-heading>	
+<div class="thumbnail" ng-repeat="hlseven in vm.results">
+
+	<div ng-repeat="segment in hlseven.segments">
+		<div ng-repeat="(key, value) in segment">
+			<div class="row">
+				<div ng-if="key=='_SegmentType'"> 
+					<div class="col-sm-12 segment visible-sm visible-md visible-lg">{{value}}</div>
+					<div class="col-sm-12 segment visible-xs">{{value}}</div>
+
+				</div>
+				<div ng-if="key!='_SegmentType'"> 
+					<div class="col-sm-3">{{key}}</div>
+					<div class="col-sm-9 visible-sm visible-md visible-lg">{{value}}</div>
+					<div class="col-sm-9 small-format visible-xs">{{value}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+</div>
+
+
+	</uib-tab>
+
 </uib-tabset>
 
 
