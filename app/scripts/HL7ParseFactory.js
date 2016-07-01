@@ -58,6 +58,7 @@ function() {
         result['segments']    = segmentsOut;
         result['MSH']         = msh;
         result['messageType'] = msh['Message Type'];
+        result['message']     = message;
         return result;
     };
 
