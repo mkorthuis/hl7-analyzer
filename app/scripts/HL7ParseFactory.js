@@ -58,7 +58,7 @@ function() {
         result['segments']    = segmentsOut;
         result['MSH']         = msh;
         result['messageType'] = msh['Message Type'];
-        result['message']     = message;
+        result['message']     = message.replace(/\r/g, '\r\n');
         return result;
     };
 
