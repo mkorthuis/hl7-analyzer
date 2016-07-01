@@ -10,6 +10,8 @@ angular.module('candescent.analyzer').controller('HomeController',
       vm.map = {};
       vm.results = [];
       vm.stats = [];
+      vm.totalMsg = 0;
+      vm.analyzed = {}
 
       for (var id in filesInDir) {
          var filename = filesInDir[id];
@@ -17,6 +19,7 @@ angular.module('candescent.analyzer').controller('HomeController',
             var data = fs.readFileSync(dir + '/' + filename).toString();
             //console.log(HL7Parse.parseMessage(data));
             vm.results.push(HL7Parse.parseMessage(data));
+            vm.totalMsg++;
          }
       }
 
@@ -24,24 +27,24 @@ angular.module('candescent.analyzer').controller('HomeController',
       //debugger;
       for (var id in vm.results) {
          var hl7 = vm.results[id];
-         for (var segmentId in hl7) {
+         for (var index in hl7) {
             //console.log(segmentId);
-            var segment = hl7[segmentId];
-            if(segmentId == 'segments'){
-               for (var index in segment) {
-                  var data = segment[index];
-                  var segmentName = data['_SegmentType'];
-                  for (var field in data) {
+            var segments = hl7[index];
+            if(index == 'segments'){
+               for (var index in segments) {
+                  var segment = segments[index];
+                  var segmentName = segment['_SegmentType'];
+                  for (var field in segment) {
                     if (field == '_SegmentType') {
                         continue;
                     }
                      //console.log(field + ':' + data[field]);
                      var p = segmentName + '-' + HL7Parse.findFieldIndex(segmentName, field);
                      var stats = {
-                        'length': (data[field]).length,
+                        'length': (segment[field]).length,
                         'description': field,
                         'path': p,
-                        'value': data[field]
+                        'value': segment[field],
                      }
                      console.log(segmentName);
                      vm.stats.push(stats);
@@ -52,8 +55,34 @@ angular.module('candescent.analyzer').controller('HomeController',
       }
 
       console.log(vm.stats);
+      for (var id in vm.stats){
+         var newStat = vm.stats[id];
+         if(typeof(vm.analyzed[newStat.path]) == 'object'){
+            var prevSummary = vm.analyzed[newStat.path];
+            console.log
+            if(newStat['length'] < prevSummary['length']){
+               vm.analyzed[newStat.path]['min_length'] = newStat['length'];
+            }
+            if(newStat['length'] > prevSummary['length']){
+               vm.analyzed[newStat.path]['max_length'] = newStat['length'];
+            }
 
+            if(newStat['length'] > 0){
+               vm.analyzed[newStat.path]['count']++;
+            }
+            vm.analyzed[newStat.path]['value']  = vm.analyzed[newStat.path]['value'] +', '+ newStat.value;
+         }else{
+            vm.analyzed[newStat.path] = {
+               'max_length' : newStat.length,
+               'min_length' : newStat.length,
+               'value' : newStat.value,
+               'description' : newStat.description,
+               'path' : newStat.path,
+               'count': 1
+            };
+         }
+      }
 
-      //console.log(vm.results);
+      console.log(vm.analyzed);
 
    });
