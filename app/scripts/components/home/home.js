@@ -16,6 +16,16 @@ angular.module('candescent.analyzer').controller('HomeController',
 
       $scope.$watch('vm.dir', load);
 
+      function contains(a, obj) {
+          var i = a.length;
+          while (i--) {
+             if (a[i] == obj) {
+                 return true;
+             }
+          }
+          return false;
+      }
+
       function load() {
          filesInDir = fs.readdirSync(vm.dir);
          vm.results = [];
@@ -75,13 +85,16 @@ angular.module('candescent.analyzer').controller('HomeController',
                }
 
                vm.analyzed[newStat.path]['percent'] = Math.floor((vm.analyzed[newStat.path]['count'] / vm.totalMsg) * 100) + '%';
-               vm.analyzed[newStat.path]['value'] = vm.analyzed[newStat.path]['value'] + ', ' + newStat.value;
+
+               if(!contains(vm.analyzed[newStat.path]['value'], newStat.value) && vm.analyzed[newStat.path]['value'].length < 5) {
+                  vm.analyzed[newStat.path]['value'].push(newStat.value); 
+               }
             } else {
                vm.analyzed[newStat.path] = {
                   'max_length': newStat.length,
                   'min_length': newStat.length,
                   'percent' : '100%',
-                  'value': newStat.value,
+                  'value': new Array(newStat.value),
                   'description': newStat.description,
                   'path': newStat.path,
                   'count': 1
